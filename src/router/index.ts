@@ -1,12 +1,22 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '@/views/Home.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
+    name: 'pokemon-list',
+    component: () => import(/* webpackChunkName: "pokemon-list" */ '@/views/pokemonList.vue')
   },
+  {
+    path: '/pokemon/:name',
+    name: 'pokemon-detail',
+    component: () => import(/* webpackChunkName: "pokemon-detail" */ '@/views/pokemonDetail.vue')
+  }
+  // to-do: add 404 page
+  // {
+  //   path: '/:pathMatch(.*)*',
+  //   name: 'not-found',
+  //   component: () => import('@/views/notFound.vue')
+  // }
 ]
 
 const router = createRouter({
